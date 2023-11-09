@@ -8,16 +8,16 @@
     tools:context=".SplashActivity">
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="410dp"
+        android:layout_height="729dp"
         android:gravity="center"
         android:text="Quick Quiz"
         android:textAllCaps="false"
         android:textColor="@color/white"
         android:textSize="45dp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="72dp"
-        tools:layout_editor_absoluteY="328dp" />
+        tools:layout_editor_absoluteX="-5dp"
+        tools:layout_editor_absoluteY="2dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
