@@ -26,7 +26,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/menu"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:src="@drawable/menu"
@@ -39,6 +39,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rcv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:listitem="@layout/home_item"
