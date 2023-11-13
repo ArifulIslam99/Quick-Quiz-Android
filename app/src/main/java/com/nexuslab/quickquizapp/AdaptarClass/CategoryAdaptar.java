@@ -7,8 +7,11 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.nexuslab.quickquizapp.CategoryFragment;
+import com.nexuslab.quickquizapp.QuizFragment;
 import com.nexuslab.quickquizapp.R;
 import com.nexuslab.quickquizapp.modelClass.HomeModel;
 
@@ -26,7 +29,7 @@ public class CategoryAdaptar extends RecyclerView.Adapter<CategoryAdaptar.ViewHo
     @NonNull
     @Override
     public CategoryAdaptar.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.category_item,parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.category_item, parent, false);
         return new ViewHolder(view);
     }
 
@@ -35,7 +38,12 @@ public class CategoryAdaptar extends RecyclerView.Adapter<CategoryAdaptar.ViewHo
         HomeModel model = list.get(position);
         holder.title.setText(model.getTitle());
         holder.desc.setText(model.getDesc());
-    }
+
+        holder.itemView.setOnClickListener(v->{
+        AppCompatActivity activity = (AppCompatActivity) v.getContext();
+        activity.getSupportFragmentManager().beginTransaction().replace(R.id.wrapper, new QuizFragment()).addToBackStack(null).commit();
+        });
+        }
 
     @Override
     public int getItemCount() {

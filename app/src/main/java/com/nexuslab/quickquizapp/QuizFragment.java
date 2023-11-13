@@ -41,7 +41,31 @@ public class QuizFragment extends Fragment {
         binding = FragmentQuizBinding.inflate(getLayoutInflater());
         LoadQuestion();
         EnableOption();
+        binding.nextBtn.setOnClickListener(v->{
+            position++;
+            LoadQuestion();
+            EnableOption();
+            ClearOption();
+            CheckNext();
+        });
         return binding.getRoot();
+    }
+
+    private void CheckNext() {
+        if (position == allQuestion)
+        {
+            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.wrapper, new ResultFragment(right, allQuestion)).commit();
+            list.clear();
+            position = 0;
+        }
+    }
+
+    private void ClearOption() {
+        binding.option1.setBackgroundResource(R.drawable.category_background);
+        binding.option2.setBackgroundResource(R.drawable.category_background);
+        binding.option3.setBackgroundResource(R.drawable.category_background);
+        binding.option4.setBackgroundResource(R.drawable.category_background);
+        binding.nextBtn.setBackgroundResource(R.drawable.disabled);
     }
 
     private void EnableOption() {
@@ -59,14 +83,16 @@ public class QuizFragment extends Fragment {
         list.add(new QuizModel("Que4", "Op1", "Op2", "Op3", "Op4", "Op3"));
         list.add(new QuizModel("Que5", "Op1", "Op2", "Op3", "Op4", "Op4"));
 
-        allQuestion = list.size();
+        allQuestion = 5;
         listSize = String.valueOf(allQuestion);
         binding.totalQn.setText("/" + listSize);
 
         if (position != allQuestion) {
             positionNo = String.valueOf(position + 1);
+            binding.qN.setText(positionNo);
         } else {
             positionNo = String.valueOf(position);
+            binding.qN.setText(positionNo);
         }
 
         quizModel = list.get(position);
@@ -93,6 +119,7 @@ public class QuizFragment extends Fragment {
             }
 
             DisableOption();
+            binding.nextBtn.setBackgroundResource(R.color.button);
         });
 
         binding.option2.setOnClickListener(v -> {
@@ -104,6 +131,7 @@ public class QuizFragment extends Fragment {
                 binding.option2.setBackgroundResource(R.drawable.incorrect_background);
             }
             DisableOption();
+            binding.nextBtn.setBackgroundResource(R.color.button);
         });
 
         binding.option3.setOnClickListener(v -> {
@@ -115,6 +143,7 @@ public class QuizFragment extends Fragment {
                 binding.option3.setBackgroundResource(R.drawable.incorrect_background);
             }
             DisableOption();
+            binding.nextBtn.setBackgroundResource(R.color.button);
         });
 
         binding.option4.setOnClickListener(v -> {
@@ -126,6 +155,7 @@ public class QuizFragment extends Fragment {
                 binding.option4.setBackgroundResource(R.drawable.incorrect_background);
             }
             DisableOption();
+            binding.nextBtn.setBackgroundResource(R.color.button);
         });
     }
 
