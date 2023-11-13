@@ -3,62 +3,85 @@ package com.nexuslab.quickquizapp;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link CategoryFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import com.nexuslab.quickquizapp.AdaptarClass.CategoryAdaptar;
+import com.nexuslab.quickquizapp.databinding.FragmentCategoryBinding;
+import com.nexuslab.quickquizapp.databinding.FragmentHomeBinding;
+import com.nexuslab.quickquizapp.modelClass.HomeModel;
+
+import java.util.ArrayList;
+
+
 public class CategoryFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
+    FragmentCategoryBinding binding;
+    ArrayList<HomeModel> list = new ArrayList<>();
+    CategoryAdaptar adaptar;
+    String title;
     public CategoryFragment() {
-        // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment CategoryFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static CategoryFragment newInstance(String param1, String param2) {
-        CategoryFragment fragment = new CategoryFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
+    public CategoryFragment( String title) {
+        this.title = title;
     }
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_category, container, false);
+
+        binding = FragmentCategoryBinding.inflate(getLayoutInflater());
+        LoadData();
+        return binding.getRoot();
+    }
+
+    private void LoadData() {
+        binding.rcv.setLayoutManager(new LinearLayoutManager(getContext()));
+        list.clear();
+        if(title.equals("World"))
+        {
+            list.add(new HomeModel("Capitals of the World", ""));
+            list.add(new HomeModel("Famous Landmarks", ""));
+            list.add(new HomeModel("World Geography", ""));
+            list.add(new HomeModel("Historical Events", ""));
+            adaptar = new CategoryAdaptar(getContext(), list);
+            binding.rcv.setAdapter((adaptar));
+        }
+        else if(title.equals("Sports"))
+        {
+            list.add(new HomeModel("Olympic Games", ""));
+            list.add(new HomeModel("Famous Athletes", ""));
+            list.add(new HomeModel("Rules and Regulations", ""));
+            list.add(new HomeModel("Sports History", ""));
+            adaptar = new CategoryAdaptar(getContext(), list);
+            binding.rcv.setAdapter((adaptar));
+
+
+        }
+        else if(title.equals("General Knowledge"))
+        {
+            list.add(new HomeModel("Inventions and Discoveries", ""));
+            list.add(new HomeModel("Literature and Arts", ""));
+            list.add(new HomeModel("Current Affairs", ""));
+            list.add(new HomeModel("Famous Personalities", ""));
+            adaptar = new CategoryAdaptar(getContext(), list);
+            binding.rcv.setAdapter((adaptar));
+        }
+        else if(title.equals("Science"))
+        {
+            list.add(new HomeModel("Physics Wonders", ""));
+            list.add(new HomeModel("Chemistry Concepts", ""));
+            list.add(new HomeModel("Space and Astronomy", ""));
+            list.add(new HomeModel("Environmental Science", ""));
+            adaptar = new CategoryAdaptar(getContext(), list);
+            binding.rcv.setAdapter((adaptar));
+        }
+
     }
 }

@@ -1,49 +1,40 @@
 package com.nexuslab.quickquizapp.AdaptarClass;
 
 import android.content.Context;
-import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.nexuslab.quickquizapp.CategoryFragment;
 import com.nexuslab.quickquizapp.R;
 import com.nexuslab.quickquizapp.modelClass.HomeModel;
 
 import java.util.ArrayList;
 
-public class HomeAdaptar extends RecyclerView.Adapter<HomeAdaptar.ViewHolder> {
+public class CategoryAdaptar extends RecyclerView.Adapter<CategoryAdaptar.ViewHolder> {
     Context context;
     ArrayList<HomeModel> list;
 
-    public HomeAdaptar(Context context, ArrayList<HomeModel> list) {
+    public CategoryAdaptar(Context context, ArrayList<HomeModel> list) {
         this.context = context;
         this.list = list;
     }
 
     @NonNull
     @Override
-    public HomeAdaptar.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.home_item,parent, false);
+    public CategoryAdaptar.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(context).inflate(R.layout.category_item,parent, false);
         return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull HomeAdaptar.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull CategoryAdaptar.ViewHolder holder, int position) {
         HomeModel model = list.get(position);
         holder.title.setText(model.getTitle());
         holder.desc.setText(model.getDesc());
-
-        holder.itemView.setOnClickListener(v->{
-            AppCompatActivity activity = (AppCompatActivity) v.getContext();
-            activity.getSupportFragmentManager().beginTransaction().replace(R.id.wrapper, new CategoryFragment(model.getTitle())).addToBackStack(null).commit();
-        });
-
     }
 
     @Override

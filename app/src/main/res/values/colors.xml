@@ -6,4 +6,6 @@
     <color name="secondary">#EE6D36</color>
     <color name="button">#B1BD22</color>
     <color name="optional">#EDF49B</color>
+    <color name="correct">#37B423</color>
+    <color name="incorrect">#CD3707</color>
 </resources>
