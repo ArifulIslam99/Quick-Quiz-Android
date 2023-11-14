@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 import com.nexuslab.quickquizapp.AdaptarClass.CategoryAdaptar;
 import com.nexuslab.quickquizapp.databinding.FragmentCategoryBinding;
 import com.nexuslab.quickquizapp.databinding.FragmentHomeBinding;
-import com.nexuslab.quickquizapp.modelClass.HomeModel;
+import com.nexuslab.quickquizapp.modelClass.CategoryModel;
 
 import java.util.ArrayList;
 
@@ -20,7 +20,7 @@ import java.util.ArrayList;
 public class CategoryFragment extends Fragment {
 
     FragmentCategoryBinding binding;
-    ArrayList<HomeModel> list = new ArrayList<>();
+    ArrayList<CategoryModel> list = new ArrayList<>();
     CategoryAdaptar adaptar;
     String title;
     public CategoryFragment() {
@@ -46,19 +46,19 @@ public class CategoryFragment extends Fragment {
         list.clear();
         if(title.equals("World"))
         {
-            list.add(new HomeModel("Capitals of the World", ""));
-            list.add(new HomeModel("Famous Landmarks", ""));
-            list.add(new HomeModel("World Geography", ""));
-            list.add(new HomeModel("Historical Events", ""));
+            list.add(new CategoryModel("Capitals of the World", "", "World"));
+            list.add(new CategoryModel("Famous Landmarks", "", "World"));
+            list.add(new CategoryModel("World Geography", "", "World"));
+            list.add(new CategoryModel("Historical Events", "", "World"));
             adaptar = new CategoryAdaptar(getContext(), list);
             binding.rcv.setAdapter((adaptar));
         }
         else if(title.equals("Sports"))
         {
-            list.add(new HomeModel("Olympic Games", ""));
-            list.add(new HomeModel("Famous Athletes", ""));
-            list.add(new HomeModel("Rules and Regulations", ""));
-            list.add(new HomeModel("Sports History", ""));
+            list.add(new CategoryModel("Olympic Games", "", "Sports"));
+            list.add(new CategoryModel("Famous Athletes", "", "Sports"));
+            list.add(new CategoryModel("Rules and Regulations", "", "Sports"));
+            list.add(new CategoryModel("Sports History", "", "Sports"));
             adaptar = new CategoryAdaptar(getContext(), list);
             binding.rcv.setAdapter((adaptar));
 
@@ -66,19 +66,19 @@ public class CategoryFragment extends Fragment {
         }
         else if(title.equals("General Knowledge"))
         {
-            list.add(new HomeModel("Inventions and Discoveries", ""));
-            list.add(new HomeModel("Literature and Arts", ""));
-            list.add(new HomeModel("Current Affairs", ""));
-            list.add(new HomeModel("Famous Personalities", ""));
+            list.add(new CategoryModel("Inventions and Discoveries", "", "General Knowledge"));
+            list.add(new CategoryModel("Literature and Arts", "", "General Knowledge"));
+            list.add(new CategoryModel("Current Affairs", "", "General Knowledge"));
+            list.add(new CategoryModel("Famous Personalities", "", "General Knowledge"));
             adaptar = new CategoryAdaptar(getContext(), list);
             binding.rcv.setAdapter((adaptar));
         }
         else if(title.equals("Science"))
         {
-            list.add(new HomeModel("Physics Wonders", ""));
-            list.add(new HomeModel("Chemistry Concepts", ""));
-            list.add(new HomeModel("Space and Astronomy", ""));
-            list.add(new HomeModel("Environmental Science", ""));
+            list.add(new CategoryModel("Physics Wonders", "", "Science"));
+            list.add(new CategoryModel("Chemistry Concepts", "", "Science"));
+            list.add(new CategoryModel("Space and Astronomy", "", "Science"));
+            list.add(new CategoryModel("Environmental Science", "", "Science"));
             adaptar = new CategoryAdaptar(getContext(), list);
             binding.rcv.setAdapter((adaptar));
         }

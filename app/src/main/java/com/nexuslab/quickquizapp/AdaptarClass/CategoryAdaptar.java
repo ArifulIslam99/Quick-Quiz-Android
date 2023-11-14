@@ -13,15 +13,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.nexuslab.quickquizapp.CategoryFragment;
 import com.nexuslab.quickquizapp.QuizFragment;
 import com.nexuslab.quickquizapp.R;
-import com.nexuslab.quickquizapp.modelClass.HomeModel;
+import com.nexuslab.quickquizapp.modelClass.CategoryModel;
 
 import java.util.ArrayList;
 
 public class CategoryAdaptar extends RecyclerView.Adapter<CategoryAdaptar.ViewHolder> {
     Context context;
-    ArrayList<HomeModel> list;
+    ArrayList<CategoryModel> list;
 
-    public CategoryAdaptar(Context context, ArrayList<HomeModel> list) {
+    public CategoryAdaptar(Context context, ArrayList<CategoryModel> list) {
         this.context = context;
         this.list = list;
     }
@@ -35,13 +35,13 @@ public class CategoryAdaptar extends RecyclerView.Adapter<CategoryAdaptar.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull CategoryAdaptar.ViewHolder holder, int position) {
-        HomeModel model = list.get(position);
+        CategoryModel model = list.get(position);
         holder.title.setText(model.getTitle());
         holder.desc.setText(model.getDesc());
 
         holder.itemView.setOnClickListener(v->{
         AppCompatActivity activity = (AppCompatActivity) v.getContext();
-        activity.getSupportFragmentManager().beginTransaction().replace(R.id.wrapper, new QuizFragment()).addToBackStack(null).commit();
+        activity.getSupportFragmentManager().beginTransaction().replace(R.id.wrapper, new QuizFragment(model.getCategory(), model.getTitle())).addToBackStack(null).commit();
         });
         }
 

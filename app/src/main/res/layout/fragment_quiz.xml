@@ -27,9 +27,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:padding="8dp"
-            android:text="Quiz-1"
-            android:textColor="@color/black"
-            android:textSize="26dp"
+            android:text="Read The Question Carefully Before Answer"
+            android:textColor="#312B67"
+            android:textSize="20dp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/linearLayout2"
@@ -118,16 +118,20 @@
         android:textStyle="normal"
         android:background="@drawable/category_background"/>
 
-    <TextView
-        android:id="@+id/option4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="16dp"
-        android:text="d) Pacific Ocean"
-        android:layout_margin="16dp"
-        android:textSize="20dp"
-        android:textStyle="normal"
-        android:background="@drawable/category_background"/>
+        <TextView
+            android:id="@+id/option4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:text="c) Southern Ocean"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:textStyle="normal"
+            android:background="@drawable/category_background"/>
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/nextBtn"
